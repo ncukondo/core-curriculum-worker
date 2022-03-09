@@ -16,5 +16,6 @@ jobs:
           path: data
           fetch-depth: 1  
       - run: |
+          cd data
           ls -l
 
