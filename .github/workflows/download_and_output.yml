@@ -15,6 +15,6 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: data
           fetch-depth: 1  
-        run: |
+      - run: |
           ls -l
 
