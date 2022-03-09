@@ -8,8 +8,10 @@ jobs:
     name: test worker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout data
+        uses: actions/checkout@v3
         with:
           repository: ncukondo/core-curriculum-data
-          path: dist
+          token: ${{ secrets.GH_PAT }}
+          path: data
           fetch-depth: 1   
