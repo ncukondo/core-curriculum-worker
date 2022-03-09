@@ -15,7 +15,8 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: data
           fetch-depth: 1  
-      - run: |
+      - name: display data contents
+        run: |
           cd data
           ls -l
 
