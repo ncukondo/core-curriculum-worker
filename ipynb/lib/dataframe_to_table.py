@@ -6,6 +6,24 @@ from textwrap import dedent
 from string import Template
 import pandas as pd
 
+def escape_tex(data:str):
+    """escape special characters in latex"""
+    dic={
+        "#": "\\#",
+        "$": "\\$",
+        "%": "\\%",
+        "&": "\\&",
+        "~": "\\verb|~|",
+        "_": "\\_",
+        "^": "\\verb|^|",
+        "∖": "\\verb|\\|",
+        "{": "\\{",
+        "}": "\\}",
+        ">": "\\verb|>|",
+        "<": "\\verb|<|",
+        "|": "\\verb+|+",
+    }
+    return data.translate(str.maketrans(dic))
 
 def do_group_rows(table:pd.DataFrame):
     """ group samerows in dataframe"""
@@ -25,7 +43,7 @@ def do_group_rows(table:pd.DataFrame):
             .count()\
             .apply(lambda x:process_cell_info(x[i],x[i+1]),axis=1)
         indexed = sum(indexed,[])
-        indexed = indexed.map(lambda x:json.loads(x) if x is not None else None)
+        indexed = list(map(lambda x:json.loads(x) if x is not None else None,indexed))
         output_table.iloc[:,i]=indexed
     return output_table
 
@@ -39,7 +57,7 @@ def make_html_table(table:pd.DataFrame,group_rows:bool=False):
         else:
             return f"<td>{x}</td>"
 
-    output_table= group_rows(table) if group_rows else table.copy().fillna("")
+    output_table= do_group_rows(table) if group_rows else table.copy().fillna("")
     columns=list(table.columns.values)
 
     output_table=output_table.applymap(to_table_cell)
@@ -74,9 +92,12 @@ def make_latex_table(
 
     columns=list(table.columns.values)
     layout = layout if layout!="" else repeat("X",len(columns))
-    output_table= group_rows(table) if group_rows else table.copy().fillna("")
+    output_table= do_group_rows(table) if group_rows else table.copy().fillna("")
 
     output_table=output_table.applymap(to_table_cell)
+    output_table=output_table.applymap(escape_tex)
+    #label = escape_tex(label)
+    caption = escape_tex(caption)
 
     theader=Template(r"""
         \begin{xltabular}{\linewidth}{$layout}
