@@ -18,5 +18,5 @@ if [ "${ipynb_files}" != "" ]; then
   rm ./ipynb/*.py
 fi
 
-git diff -z --cached --name-only --diff-filter=ACMD \
+git diff -z --cached --name-only --diff-filter=ACM \
   | xargs -r -0 git add
