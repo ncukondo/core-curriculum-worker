@@ -103,18 +103,23 @@ def from_service_account():
     """ make GoogleDrive instance from service account information """
     return GoogleDrive(get_creds())
 
-def make_metadata(local_path:str,parent_id:str=None):
+def make_metadata(local_path:str,parent_id:str=None,mime_type="",exclude_ext=False):
     """ make metadata for google drive """
-    file_metadata={'name': os.path.basename(local_path)}
+    name = os.path.basename(local_path)
+    if exclude_ext:
+        name, _ = os.path.splitext(name)
+    file_metadata={'name': name}
+    if mime_type!="":
+        file_metadata["mimeType"]=mime_type
     if parent_id:
         file_metadata["parents"]=[parent_id]
     return file_metadata
 
-def make_mediabody(local_path:str):
+def make_mediabody(local_path:str,mime_type=""):
     """ make media body for google drive """
     return MediaFileUpload(
             local_path,
-            mimetype=mimetypes.guess_type(local_path)[0],
+            mimetype=mime_type if mime_type!="" else mimetypes.guess_type(local_path)[0],
             resumable=True
         )
 
@@ -125,9 +130,9 @@ class GoogleDrive:
         self.cred=cred
         self.service = build(API_SERVICE_NAME, API_VERSION, http=cred.authorize(Http()))
 
-    def upload(self,local_path:str,parent_id:str)->str:
+    def upload(self,local_path:str,parent_id:str,target_mime_type="",exclude_ext=False)->str:
         """ upload local file to drive """
-        file_metadata = make_metadata(local_path,parent_id)
+        file_metadata = make_metadata(local_path,parent_id,mime_type=target_mime_type,exclude_ext=exclude_ext)
         media = make_mediabody(local_path)
         drive_file = self.service.files().create(
             body=file_metadata, media_body=media, fields='id',
@@ -135,9 +140,9 @@ class GoogleDrive:
         ).execute()
         return drive_file.get("id")
 
-    def update(self,local_path:str,target_id:str):
+    def update(self,local_path:str,target_id:str,target_mime_type="",exclude_ext=False):
         """ update file of the id or upload file """
-        file_metadata = make_metadata(local_path)
+        file_metadata = make_metadata(local_path,mime_type=target_mime_type,exclude_ext=exclude_ext)
         media = make_mediabody(local_path)
         drive_file = self.service.files().update(
             body=file_metadata, media_body=media, fileId=target_id,fields='id',
@@ -145,22 +150,24 @@ class GoogleDrive:
         ).execute()
         return drive_file.get("id")
 
-    def get_id_by_name(self,name:str,parent_id:str):
+    def get_id_by_name(self,name:str,parent_id:str,exclude_ext=False):
         """ get id of the named file in parent_id """
         file_id=''
+        if exclude_ext:
+            name, _ = os.path.splitext(name)
         file_list = self.get_list(f"'{parent_id}' in parents and name = '{name}'")
         for file in file_list:
             file_id=file["id"]
             break
         return file_id
 
-    def update_by_name(self,local_path:str,parent_id:str):
+    def update_by_name(self,local_path:str,parent_id:str,target_mime_type="",exclude_ext=False):
         """ update file of same name or upload file """
         name = os.path.basename(local_path)
-        file_id=self.get_id_by_name(name,parent_id)
+        file_id=self.get_id_by_name(name,parent_id,exclude_ext)
         if file_id=='':
-            return self.upload(local_path,parent_id)
-        return self.update(local_path,file_id)
+            return self.upload(local_path,parent_id,target_mime_type=target_mime_type,exclude_ext=exclude_ext)
+        return self.update(local_path,file_id,target_mime_type=target_mime_type,exclude_ext=exclude_ext)
 
     def download(self,file_id:str,dest_path:str=".")->str:
         """ download content from drive """

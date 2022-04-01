@@ -1,7 +1,10 @@
-.PHONY: pdf statistics
+.PHONY: pdf statistics deploy
+
+deploy:
+	python ./python/deploy_to_google_drive.py
 
 statistics:
-	python ./python.output_statistics.py
+	python ./python/output_statistics.py
 
 pdf: 
 	python ./python/output_tables.py

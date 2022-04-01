@@ -5,8 +5,8 @@
 
 
 import os
-import json
-import tempfile
+from lib.utils import OUTPUT_DIR,DATA_DIR
+
 
 from dateutil.parser import parse as parse_date
 
@@ -16,14 +16,20 @@ folder_id="1L4fQFNd42HEN5mPEgicRxZe3rY5_ZliB"
 
 drive = from_service_account()
 file_list= [
-    "./dist/r4_draft.md",
-    "./dist/r4_draft.pdf",
-    "./dist/r4_draft.docx",
-    "./dist/r4.md",
-    "./dist/r4.pdf",
-    "./dist/r4.docx",
+    f"{OUTPUT_DIR}/outcomes.pdf",
+    f"{OUTPUT_DIR}/statistics_new_items.csv",
+    f"{OUTPUT_DIR}/statistics_removed_ids.csv",
+    f"{OUTPUT_DIR}/statistics_item_counts.csv",
+    f"{OUTPUT_DIR}/statistics_h28_to_r4.csv",
+    f"{DATA_DIR}/2016/goals.csv",
 ]
 for file_path in file_list:
-    id=drive.update_by_name(file_path,folder_id)
+    root, ext = os.path.splitext(file_path)
+    mimeType= ""
+    exclude_ext=False
+    if ext==".csv":
+        mimeType= 'application/vnd.google-apps.spreadsheet'
+        exclude_ext=True
+    id=drive.update_by_name(file_path,folder_id,target_mime_type=mimeType,exclude_ext=exclude_ext)
     print(f"deploy {os.path.basename(file_path)} as {id}")
 

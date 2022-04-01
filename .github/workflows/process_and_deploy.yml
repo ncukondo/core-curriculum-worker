@@ -37,5 +37,10 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: download sheets and make output
+      - name: make pdf
+        run: make pdf
+      - name: make statistics
         run: make output
+      - name: deploy
+        run: make deploy
+        
