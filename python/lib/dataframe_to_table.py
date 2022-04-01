@@ -9,19 +9,19 @@ import pandas as pd
 def escape_tex(data:str):
     """escape special characters in latex"""
     dic={
-        "#": "\\#",
-        "$": "\\$",
-        "%": "\\%",
-        "&": "\\&",
-        "~": "\\verb|~|",
-        "_": "\\_",
-        "^": "\\verb|^|",
-        "∖": "\\verb|\\|",
-        "{": "\\{",
-        "}": "\\}",
-        ">": "\\verb|>|",
-        "<": "\\verb|<|",
-        "|": "\\verb+|+",
+        "#": r"\#",
+        "$": r"\$",
+        "%": r"\%",
+        "&": r"\&",
+        "~": r"\verb|~|",
+        "_": r"\_",
+        "^": r"\verb|^|",
+        "∖": r"\verb|\|",
+        "{": r"\{",
+        "}": r"\}",
+        ">": r"\verb|>|",
+        "<": r"\verb|<|",
+        "|": r"\verb+|+",
     }
     return data.translate(str.maketrans(dic))
 

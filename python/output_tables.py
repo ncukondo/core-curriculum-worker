@@ -4,6 +4,8 @@
 # In[ ]:
 
 
+import os
+import re
 import pandas as pd
 from lib.dataframe_to_table import make_latex_table
 from lib.dataframe_to_table import make_html_table
@@ -12,6 +14,7 @@ import glob
 
 from lib.utils import DATA_DIR,TABLES_DIR,OUTPUT_DIR,TABLES_INDEX
 
+os.makedirs(OUTPUT_DIR,exist_ok=True)
 
 def output_tables():
     table_index = pd.read_csv(f'{TABLES_INDEX}',encoding="utf_8_sig")
@@ -20,7 +23,7 @@ def output_tables():
     html_output=""
     for row in table_index.itertuples():
         table = pd.read_csv(f"{TABLES_DIR}/{row.id}.csv")
-        table = table.drop("id",axis=1)
+        table = table.loc[:,re.split(r" *, *",row.列)]
 
         latex_output+=make_latex_table(table,label=row.id,group_rows=True,caption=row.表名)+"\n\n"
         html_output+=make_html_table(table,group_rows=True)+"\n\n"
