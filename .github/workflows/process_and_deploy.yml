@@ -1,6 +1,7 @@
 name: make pdf statistics and deploy
 
 on:
+  repository_dispatch:
   workflow_dispatch:
 
 jobs:
@@ -38,9 +39,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: make pdf
-        run: make pdf
+        run: |
+          make markdown_for_tex
+          make pdf
       - name: make statistics
         run: make output
       - name: deploy
         run: make deploy
-        
+
