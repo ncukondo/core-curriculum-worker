@@ -43,7 +43,7 @@ jobs:
           make markdown_for_tex
           make pdf
       - name: make statistics
-        run: make output
+        run: make statistics
       - name: deploy
         run: make deploy
 
