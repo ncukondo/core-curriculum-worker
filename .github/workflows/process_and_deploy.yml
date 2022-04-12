@@ -40,6 +40,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: make pdf
         run: |
+          make python_files
           make markdown_for_tex
           make pdf
       - name: make statistics
