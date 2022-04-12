@@ -28,9 +28,9 @@ pdf:
 		-o ./output/outcomes.pdf
 
 python_files:
-	jupyter nbconvert --to python ./ipynb/*.ipynb
+	jupyter nbconvert --to python ./src/*.ipynb
 	rm -rf python
 	mkdir python
-	cp ./ipynb/*.py python
-	cp -r ./ipynb/lib python
-	rm ./ipynb/*.py
+	cp ./src/*.py python
+	cp -r ./src/lib python
+	rm ./src/*.py
