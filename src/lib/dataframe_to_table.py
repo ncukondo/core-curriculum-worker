@@ -47,7 +47,7 @@ def do_group_rows(table:pd.DataFrame):
         output_table.iloc[:,i]=indexed
     return output_table
 
-def make_html_table(table:pd.DataFrame,group_rows:bool=False):
+def make_html_table(table:pd.DataFrame,group_rows:bool=False,id=""):
     """ make html table from dataframe """
     def to_table_cell(x):
         if x is None:
@@ -68,7 +68,8 @@ def make_html_table(table:pd.DataFrame,group_rows:bool=False):
         row=f"<tr>{''.join(items[1:])}</tr>\n"
         tbody += row
     tbody+="</tbody>\n"
-    table_html=f"<table border=1>{theader}\n{tbody}</table>"
+    id_part= f' id={id}' if len(id)>0 else "" 
+    table_html=f"<table border=1{id_part}>{theader}\n{tbody}</table>"
     return table_html
 
 def repeat(char:str,count:int):
@@ -116,3 +117,27 @@ def make_latex_table(
     """)
     return table_latex
 
+def make_markdown_table(table:pd.DataFrame,group_rows:bool=False,id="",caption:str=""):
+    """ make markdown table from dataframe """
+    def to_table_cell(x):
+        if x is None:
+            return ""
+        elif isinstance(x,dict):
+            return f'{x["text"]}'
+        else:
+            return f"{x}"
+
+    output_table= do_group_rows(table) if group_rows else table.copy().fillna("")
+    columns=list(table.columns.values)
+
+    output_table=output_table.applymap(to_table_cell)
+
+    theader=f"| {' | '.join(columns)} |\n"
+    theader+=f"| "+' | '.join(list(map(lambda _: "----",columns)))+" |\n"
+    tbody=""
+    for items in output_table.fillna("").itertuples():
+        row=f"| {' | '.join(items[1:])} |\n"
+        tbody += row
+    id_part= f"\n: {caption} "+'{#tbl:'+id+'}\n' if len(id)>0 else "" 
+    output_table=f"{theader}{tbody}{id_part}"
+    return output_table
