@@ -41,7 +41,7 @@ jobs:
       - name: make pdf
         run: |
           make python_files
-          make markdown_for_tex
+          make markdowns
           make pdf
           make docx
       - name: make statistics
