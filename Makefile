@@ -34,6 +34,7 @@ docx:
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--toc \
+		--reference-doc=src/template.docx \
 		./output/outcomes_for_docx.md \
 		-o ./output/outcomes.docx
 
