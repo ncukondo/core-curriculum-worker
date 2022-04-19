@@ -16,6 +16,7 @@ WORKDIR /work
 RUN apt update \ 
   && apt install fonts-noto-cjk
 
+RUN apt-get update
 
 # 必要ライブラリ
 COPY requirements.txt ./

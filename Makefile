@@ -2,7 +2,9 @@ pwd:=$(shell pwd)
 uid:=$(shell id -u)
 gid:=$(shell id -g)
 repo=ghcr.io/ncukondo/
-d_run:=docker run --rm --volume "${pwd}:/data" --user ${uid}:${gid} ${repo}
+get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
+local_dir:=$(get_dir)
+d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
 .PHONY: pdf statistics deploy markdowns
 
