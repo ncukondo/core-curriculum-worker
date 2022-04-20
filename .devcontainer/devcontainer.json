@@ -10,7 +10,7 @@
 		"GRANT_SUDO":"yes",
         "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	},
-	"runArgs": ["--env-file","./client_secret.env"],
+	"runArgs": ["--env-file",".env"],
 	"features": {
         "docker-from-docker": {
             "version": "latest"
