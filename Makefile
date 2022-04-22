@@ -69,7 +69,7 @@ docx_from_html:
 		--toc \
 		--reference-doc=src/template.docx \
 		./output/outcomes.html \
-		-o ./output/outcomes_from_html.docx
+		-o ./output/outcomes.docx
 
 
 
