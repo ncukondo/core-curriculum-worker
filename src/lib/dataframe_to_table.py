@@ -62,7 +62,7 @@ def make_html_table(table:pd.DataFrame,group_rows:bool=False,id=""):
 
     output_table=output_table.applymap(to_table_cell)
 
-    theader=f"<thead><tr><th>{'</th><th>'.join(columns)}</th></thead></tr>"
+    theader=f"<thead><tr><th>{'</th><th>'.join(columns)}</th></tr></thead>"
     tbody="<tbody>\n"
     for items in output_table.fillna("").itertuples():
         row=f"<tr>{''.join(items[1:])}</tr>\n"

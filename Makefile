@@ -6,7 +6,7 @@ get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
 local_dir:=$(get_dir)
 d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
-.PHONY: pdf statistics deploy markdowns
+.PHONY: pdf statistics deploy markdowns html
 
 deploy:
 	python ./python/deploy_to_google_drive.py
@@ -58,6 +58,19 @@ docx:
 		--reference-doc=src/template.docx \
 		./output/outcomes_for_docx.md \
 		-o ./output/outcomes.docx
+
+docx_from_html: 
+	${d_run}pandoc-latex-ja \
+		--filter=pandoc-crossref \
+		--self-contained \
+		./output/outcomes_for_docx.md \
+		-o ./output/outcomes.html
+	${d_run}pandoc-latex-ja \
+		--toc \
+		--reference-doc=src/template.docx \
+		./output/outcomes.html \
+		-o ./output/outcomes_from_html.docx
+
 
 
 python_files:
