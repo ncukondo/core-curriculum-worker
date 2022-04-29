@@ -15,6 +15,7 @@ statistics:
 	python ./python/output_statistics.py
 
 markdowns:
+	python ./python/output_outcomes_md.py
 	python ./python/output_tables.py
 	python ./python/output_md_for_tex.py
 	python ./python/output_md_for_docx.py
