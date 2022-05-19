@@ -138,6 +138,6 @@ def make_markdown_table(table:pd.DataFrame,group_rows:bool=False,id="",caption:s
     for items in output_table.fillna("").itertuples():
         row=f"| {' | '.join(items[1:])} |\n"
         tbody += row
-    id_part= f"\n: {caption} "+'{#tbl:'+id+'}\n' if len(id)>0 else "" 
-    output_table=f"{theader}{tbody}{id_part}"
+    id_part= f"\n## {caption} "+'{#'+id+'}\n\n' if len(id)>0 else "" 
+    output_table=f"{id_part}{theader}{tbody}"
     return output_table
