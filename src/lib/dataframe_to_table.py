@@ -47,7 +47,10 @@ def do_group_rows(table:pd.DataFrame):
         output_table.iloc[:,i]=indexed
     return output_table
 
-def make_html_table(table:pd.DataFrame,group_rows:bool=False,id=""):
+def make_html_table(table:pd.DataFrame,
+    group_rows:bool=False,
+    legend:str="",
+    id=""):
     """ make html table from dataframe """
     def to_table_cell(x):
         if x is None:
@@ -69,7 +72,8 @@ def make_html_table(table:pd.DataFrame,group_rows:bool=False,id=""):
         tbody += row
     tbody+="</tbody>\n"
     id_part= f' id={id}' if len(id)>0 else "" 
-    table_html=f"<table border=1{id_part}>{theader}\n{tbody}</table>"
+    legend_part= f"<p>{legend}</p>" if len(legend)>0 else ""
+    table_html=f"{legend_part}<table border=1{id_part}>{theader}\n{tbody}</table>"
     return table_html
 
 def repeat(char:str,count:int):
@@ -81,6 +85,7 @@ def make_latex_table(
     label:str="",
     layout:str="",
     caption:str="",
+    legend:str="",
     group_rows:bool=False):
     """ make latex table from dataframe """
     def to_table_cell(x):
@@ -103,9 +108,10 @@ def make_latex_table(
     theader=Template(r"""
         \begin{xltabular}{\linewidth}{$layout}
         \caption{\label{tbl:$label}$caption} \\
-        \toprule
     """).safe_substitute({"layout":layout,"label":label,"caption":caption})
-    theader=dedent(theader)
+    if legend!="":
+        theader+=Template("    \\caption*{$legend} \\\\\n").safe_substitute({"legend":legend})
+    theader=dedent(theader)+"\\toprule\n"
     theader+=' & '.join(columns)+r" \\"
     tbody="\\midrule\n\\endhead\n"
     for items in output_table.itertuples():
@@ -117,7 +123,12 @@ def make_latex_table(
     """)
     return table_latex
 
-def make_markdown_table(table:pd.DataFrame,group_rows:bool=False,id="",caption:str=""):
+def make_markdown_table(
+    table:pd.DataFrame,
+    group_rows:bool=False,
+    id="",
+    legend:str="",
+    caption:str=""):
     """ make markdown table from dataframe """
     def to_table_cell(x):
         if x is None:
@@ -139,5 +150,6 @@ def make_markdown_table(table:pd.DataFrame,group_rows:bool=False,id="",caption:s
         row=f"| {' | '.join(items[1:])} |\n"
         tbody += row
     id_part= f"\n## {caption} "+'{#'+id+'}\n\n' if len(id)>0 else "" 
-    output_table=f"{id_part}{theader}{tbody}"
+    legend_part= f"\n\n{legend}\n\n" if len(legend)>0 else ""
+    output_table=f"{id_part}{legend_part}{theader}{tbody}"
     return output_table

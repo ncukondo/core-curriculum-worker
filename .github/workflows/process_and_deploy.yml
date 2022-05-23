@@ -43,7 +43,7 @@ jobs:
           make python_files
           make markdowns
           make pdf
-          make docx_from_html
+          make docx
       - name: make statistics
         run: make statistics
       - name: deploy

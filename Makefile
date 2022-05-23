@@ -52,7 +52,7 @@ tex:
 
 
 # docker run --rm --volume "$(pwd):/data" --user $(id -u):$(id -g) ghcr.io/ncukondo/pandoc-latex-ja -V documentclass=ltjsarticle --filter=pandoc-crossref --pdf-engine=lualatex ./output/outcomes_for_tex.md -o ./output/outcomes.pdf
-docx: 
+docx_direct: 
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--toc \
@@ -60,7 +60,7 @@ docx:
 		./output/outcomes_for_docx.md \
 		-o ./output/outcomes.docx
 
-docx_from_html: 
+docx: 
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--self-contained \
