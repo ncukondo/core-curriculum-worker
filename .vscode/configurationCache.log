@@ -1,1 +1,1 @@
-{"buildTargets":["deploy","docx","docx_from_html","html","markdowns","pdf","pdf_from_tex","python_files","statistics","tex"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["deploy","docx","docx_direct","html","markdowns","pdf","pdf_from_tex","python_files","statistics","tex"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

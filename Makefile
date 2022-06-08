@@ -28,7 +28,7 @@ pdf:
 		--pdf-engine=lualatex \
 		--filter=pandoc-crossref \
 		--toc \
-		--toc-depth=2 \
+		--toc-depth=3 \
 		./output/outcomes_for_tex.md \
 		-o ./output/outcomes.pdf
 
@@ -45,7 +45,7 @@ tex:
 		--pdf-engine=lualatex \
 		--filter=pandoc-crossref \
 		--toc \
-		--toc-depth=2 \
+		--toc-depth=3 \
 		--self-contained \
 		./output/outcomes_for_tex.md \
 		-o ./output/outcomes.tex
