@@ -1,5 +1,43 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/ncukondo/dev/core-curriculum-worker'
-python ./python/deploy_to_google_drive.py
+ 
+jupyter nbconvert --to python ./src/*.ipynb
+rm -rf python
+mkdir python
+cp ./src/*.py python
+cp -r ./src/lib python
+rm ./src/*.py
+python ./python/output_outcomes_md.py
+python ./python/output_tables.py
+python ./python/output_documents_md.py
+python ./python/output_md_for_tex.py
+python ./python/output_md_for_docx.py
+docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-lualatex-ja pandoc\
+	-V documentclass=ltjsarticle \
+	--pdf-engine=lualatex \
+	--filter=pandoc-crossref \
+	--toc \
+	--toc-depth=3 \
+	./output/core_curriculum_for_tex.md \
+	-o ./output/core_curriculum.pdf
+docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-lualatex-ja pandoc\
+	-V documentclass=ltjsarticle \
+	--pdf-engine=lualatex \
+	--filter=pandoc-crossref \
+	--toc \
+	--toc-depth=3 \
+	./output/outcomes_for_tex.md \
+	-o ./output/outcomes.pdf
+docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-latex-ja \
+	--filter=pandoc-crossref \
+	--self-contained \
+	./output/outcomes_for_docx.md \
+	-o ./output/outcomes.html
+docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-latex-ja \
+	--toc \
+	--reference-doc=src/template.docx \
+	./output/outcomes.html \
+	-o ./output/outcomes.docx
+python ./python/output_statistics.py
 make: Leaving directory '/home/ncukondo/dev/core-curriculum-worker'
  
