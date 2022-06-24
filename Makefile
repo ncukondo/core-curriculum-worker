@@ -8,7 +8,7 @@ d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo
 
 .PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc
 
-documents: prepare_for_pandoc pdf outcome_pdf docx statistics
+documents: prepare_for_pandoc pdf outcome_pdf docx outcome_docx statistics
 
 prepare_for_pandoc: python_files markdowns
 
@@ -80,6 +80,18 @@ docx:
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--self-contained \
+		./output/core_curriculum_for_docx.md \
+		-o ./output/core_curriculum.html
+	${d_run}pandoc-latex-ja \
+		--toc \
+		--reference-doc=src/template.docx \
+		./output/core_curriculum.html \
+		-o ./output/core_curriculum.docx
+
+outcome_docx: 
+	${d_run}pandoc-latex-ja \
+		--filter=pandoc-crossref \
+		--self-contained \
 		./output/outcomes_for_docx.md \
 		-o ./output/outcomes.html
 	${d_run}pandoc-latex-ja \
@@ -87,7 +99,6 @@ docx:
 		--reference-doc=src/template.docx \
 		./output/outcomes.html \
 		-o ./output/outcomes.docx
-
 
 
 python_files:

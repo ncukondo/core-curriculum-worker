@@ -18,3 +18,4 @@ def get_full_outcomes():
     r4_full=r4.dropna(subset=["l1","l2","l3","l4"]).fillna("")
     return r4_full
 
+
