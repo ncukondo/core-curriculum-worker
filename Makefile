@@ -6,9 +6,11 @@ get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
 local_dir:=$(get_dir)
 d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
-.PHONY: pdf statistics deploy markdowns html output
+.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc
 
-documents: python_files markdowns pdf outcome_pdf docx statistics
+documents: prepare_for_pandoc pdf outcome_pdf docx statistics
+
+prepare_for_pandoc: python_files markdowns
 
 deploy:
 	python ./python/deploy_to_google_drive.py
