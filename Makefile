@@ -6,7 +6,9 @@ get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
 local_dir:=$(get_dir)
 d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
-.PHONY: pdf statistics deploy markdowns html
+.PHONY: pdf statistics deploy markdowns html output
+
+documents: python_files markdowns pdf outcome_pdf docx statistics
 
 deploy:
 	python ./python/deploy_to_google_drive.py
@@ -17,6 +19,7 @@ statistics:
 markdowns:
 	python ./python/output_outcomes_md.py
 	python ./python/output_tables.py
+	python ./python/output_documents_md.py
 	python ./python/output_md_for_tex.py
 	python ./python/output_md_for_docx.py
 
@@ -29,8 +32,19 @@ pdf:
 		--filter=pandoc-crossref \
 		--toc \
 		--toc-depth=3 \
+		./output/core_curriculum_for_tex.md \
+		-o ./output/core_curriculum.pdf
+
+outcome_pdf: 
+	${d_run}pandoc-lualatex-ja pandoc\
+		-V documentclass=ltjsarticle \
+		--pdf-engine=lualatex \
+		--filter=pandoc-crossref \
+		--toc \
+		--toc-depth=3 \
 		./output/outcomes_for_tex.md \
 		-o ./output/outcomes.pdf
+
 
 pdf_from_tex: 
 	${d_run}pandoc-lualatex-ja lualatex\
