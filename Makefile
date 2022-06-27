@@ -95,12 +95,12 @@ docx:
 		--filter=pandoc-crossref \
 		--self-contained \
 		./output/core_curriculum_for_docx.md \
+		--bibliography=./data_in_github/citations.bib \
+		--citeproc \
 		-o ./output/core_curriculum.html
 	${d_run}pandoc-latex-ja \
 		--toc \
 		--reference-doc=src/template.docx \
-		--bibliography=./data_in_github/citations.bib \
-		--citeproc \
 		./output/core_curriculum.html \
 		-o ./output/core_curriculum.docx
 
