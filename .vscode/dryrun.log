@@ -12,6 +12,7 @@ python ./python/output_tables.py
 python ./python/output_documents_md.py
 python ./python/output_md_for_tex.py
 python ./python/output_md_for_docx.py
+ 
 docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-lualatex-ja pandoc\
 	-V documentclass=ltjsarticle \
 	--pdf-engine=lualatex \
@@ -28,6 +29,16 @@ docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1
 	--toc-depth=3 \
 	./output/outcomes_for_tex.md \
 	-o ./output/outcomes.pdf
+docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-latex-ja \
+	--filter=pandoc-crossref \
+	--self-contained \
+	./output/core_curriculum_for_docx.md \
+	-o ./output/core_curriculum.html
+docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-latex-ja \
+	--toc \
+	--reference-doc=src/template.docx \
+	./output/core_curriculum.html \
+	-o ./output/core_curriculum.docx
 docker run --rm --volume "${LOCAL_WORKSPACE_FOLDER:-$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/pandoc-latex-ja \
 	--filter=pandoc-crossref \
 	--self-contained \

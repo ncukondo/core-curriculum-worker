@@ -6,11 +6,23 @@ get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
 local_dir:=$(get_dir)
 d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
-.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc
+.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc all
 
-documents: prepare_for_pandoc pdf outcome_pdf docx outcome_docx statistics
+all:
+	make documents
+	make deploy
 
-prepare_for_pandoc: python_files markdowns
+documents: 
+	make prepare_for_pandoc 
+	make pdf 
+	make outcome_pdf 
+	make docx 
+	make outcome_docx 
+	make statistics
+
+prepare_for_pandoc: 
+	make python_files 
+	make markdowns
 
 deploy:
 	python ./python/deploy_to_google_drive.py
@@ -34,6 +46,8 @@ pdf:
 		--filter=pandoc-crossref \
 		--toc \
 		--toc-depth=3 \
+		--bibliography=./data_in_github/citations.bib \
+		--citeproc \
 		./output/core_curriculum_for_tex.md \
 		-o ./output/core_curriculum.pdf
 
@@ -85,6 +99,8 @@ docx:
 	${d_run}pandoc-latex-ja \
 		--toc \
 		--reference-doc=src/template.docx \
+		--bibliography=./data_in_github/citations.bib \
+		--citeproc \
 		./output/core_curriculum.html \
 		-o ./output/core_curriculum.docx
 
