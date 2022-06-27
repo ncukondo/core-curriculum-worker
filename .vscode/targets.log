@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon Jun 27 17:55:30 2022
+# Make data base, printed on Mon Jun 27 20:49:51 2022
 
 # Variables
 
@@ -64,7 +63,7 @@ VSCODE_LOG_STACK = false
 # environment
 PYENV_ROOT = /home/ncukondo/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-fdc84781-dba0-47ac-815a-5021132b1561.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-c78772a7-4e5a-4dba-98c5-e7eb55189a94.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -84,11 +83,11 @@ PWD = /home/ncukondo/dev/core-curriculum-worker
 # environment
 SSH_AGENT_PID = 257
 # environment
-WSL_INTEROP = /run/WSL/14079_interop
+WSL_INTEROP = /run/WSL/19487_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
-WT_SESSION = 22ffa320-7472-4b84-9757-a6527fd4915d
+WT_SESSION = 1564501e-25b8-4255-acd7-6d923c75d866
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -295,6 +294,7 @@ markdowns:
 #  File has not been updated.
 
 # Not a target:
+ 
 Makefile:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-27 15:20:23.060430999
@@ -351,7 +351,6 @@ docx:
 		--reference-doc=src/template.docx \
 		./output/core_curriculum.html \
 		-o ./output/core_curriculum.docx
- 
 
 outcome_pdf:
 #  Implicit rule search has not been done.
@@ -444,6 +443,6 @@ tex:
 # strcache performance: lookups = 63 / hit rate = 44%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=1/63=2%
-# Finished Make data base on Mon Jun 27 17:55:30 2022
+# Finished Make data base on Mon Jun 27 20:49:51 2022
 
  

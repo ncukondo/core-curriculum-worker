@@ -3,5 +3,6 @@ make: Entering directory '/home/ncukondo/dev/core-curriculum-worker'
  
 make documents
 make deploy
+ 
 make: Leaving directory '/home/ncukondo/dev/core-curriculum-worker'
  
