@@ -1,14 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Jun 27 14:27:01 2022
+# Make data base, printed on Mon Jun 27 17:55:30 2022
 
 # Variables
 
@@ -65,7 +64,7 @@ VSCODE_LOG_STACK = false
 # environment
 PYENV_ROOT = /home/ncukondo/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-2b453ad7-651d-4470-8d75-f255cae9b9ac.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-fdc84781-dba0-47ac-815a-5021132b1561.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -85,11 +84,11 @@ PWD = /home/ncukondo/dev/core-curriculum-worker
 # environment
 SSH_AGENT_PID = 257
 # environment
-WSL_INTEROP = /run/WSL/1642_interop
+WSL_INTEROP = /run/WSL/14079_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
-WT_SESSION = c3fc2431-278e-4aca-870e-73a84fc22de9
+WT_SESSION = 22ffa320-7472-4b84-9757-a6527fd4915d
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -119,7 +118,7 @@ MAKE_VERSION := 4.2.1
 # environment
 USER = ncukondo
 # makefile
-.DEFAULT_GOAL := documents
+.DEFAULT_GOAL := all
 # environment
 NAME = Code
 # automatic
@@ -183,7 +182,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=85/1024=8%, Rehash=0, Collisions=10/126=8%
+# Load=85/1024=8%, Rehash=0, Collisions=10/129=8%
 
 # Pattern-specific Variable Values
 
@@ -205,7 +204,7 @@ python_files:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 105):
+#  recipe to execute (from 'Makefile', line 121):
 	jupyter nbconvert --to python ./src/*.ipynb
 	rm -rf python
 	mkdir python
@@ -218,41 +217,79 @@ pdf:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 31):
+#  recipe to execute (from 'Makefile', line 43):
 	${d_run}pandoc-lualatex-ja pandoc\
 		-V documentclass=ltjsarticle \
 		--pdf-engine=lualatex \
 		--filter=pandoc-crossref \
 		--toc \
 		--toc-depth=3 \
+		--bibliography=./data_in_github/citations.bib \
+		--citeproc \
 		./output/core_curriculum_for_tex.md \
 		-o ./output/core_curriculum.pdf
 
-documents: prepare_for_pandoc pdf outcome_pdf docx outcome_docx statistics
+documents:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 16):
+	make prepare_for_pandoc 
+	make pdf 
+	make outcome_pdf 
+	make docx 
+	make outcome_docx 
+	make statistics
 
-# Not a target:
 all:
+#  Phony target (prerequisite of .PHONY).
 #  Command line target.
-#  Implicit rule search has been done.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  recipe to execute (from 'Makefile', line 12):
+	make documents
+	make deploy
 
 markdowns:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 22):
+#  recipe to execute (from 'Makefile', line 34):
 	python ./python/output_outcomes_md.py
 	python ./python/output_tables.py
 	python ./python/output_documents_md.py
 	python ./python/output_md_for_tex.py
 	python ./python/output_md_for_docx.py
 
-.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc
+.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -260,7 +297,7 @@ markdowns:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-24 23:50:15.016454023
+#  Last modified 2022-06-27 15:20:23.060430999
 #  File has been updated.
 #  Successfully updated.
 
@@ -268,7 +305,7 @@ docx_direct:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 72):
+#  recipe to execute (from 'Makefile', line 86):
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--toc \
@@ -282,11 +319,14 @@ docx_direct:
 #  Modification time never checked.
 #  File has not been updated.
 
-prepare_for_pandoc: python_files markdowns
+prepare_for_pandoc:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 24):
+	make python_files 
+	make markdowns
 
 html:
 #  Phony target (prerequisite of .PHONY).
@@ -298,24 +338,26 @@ docx:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 80):
+#  recipe to execute (from 'Makefile', line 94):
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--self-contained \
 		./output/core_curriculum_for_docx.md \
+		--bibliography=./data_in_github/citations.bib \
+		--citeproc \
 		-o ./output/core_curriculum.html
- 
 	${d_run}pandoc-latex-ja \
 		--toc \
 		--reference-doc=src/template.docx \
 		./output/core_curriculum.html \
 		-o ./output/core_curriculum.docx
+ 
 
 outcome_pdf:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 41):
+#  recipe to execute (from 'Makefile', line 55):
 	${d_run}pandoc-lualatex-ja pandoc\
 		-V documentclass=ltjsarticle \
 		--pdf-engine=lualatex \
@@ -329,7 +371,7 @@ pdf_from_tex:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 52):
+#  recipe to execute (from 'Makefile', line 66):
 	${d_run}pandoc-lualatex-ja lualatex\
 		-output-directory=output \
 		./output/outcomes.tex \
@@ -339,7 +381,7 @@ outcome_docx:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 92):
+#  recipe to execute (from 'Makefile', line 108):
 	${d_run}pandoc-latex-ja \
 		--filter=pandoc-crossref \
 		--self-contained \
@@ -356,7 +398,7 @@ deploy:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 16):
+#  recipe to execute (from 'Makefile', line 28):
 	python ./python/deploy_to_google_drive.py
 
 output:
@@ -370,14 +412,14 @@ statistics:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 19):
+#  recipe to execute (from 'Makefile', line 31):
 	python ./python/output_statistics.py
 
 tex:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 59):
+#  recipe to execute (from 'Makefile', line 73):
 	${d_run}pandoc-lualatex-ja pandoc\
 		-V documentclass=ltjsarticle \
 		--pdf-engine=lualatex \
@@ -389,7 +431,7 @@ tex:
 		-o ./output/outcomes.tex
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=3/54=6%
+# Load=20/1024=2%, Rehash=0, Collisions=1/45=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
@@ -399,9 +441,9 @@ tex:
 # strcache buffers: 1 (0) / strings = 35 / storage = 326 B / avg = 9 B
 # current buf: size = 8162 B / used = 326 B / count = 35 / avg = 9 B
 
-# strcache performance: lookups = 67 / hit rate = 47%
+# strcache performance: lookups = 63 / hit rate = 44%
 # hash-table stats:
-# Load=35/8192=0%, Rehash=0, Collisions=1/67=1%
-# Finished Make data base on Mon Jun 27 14:27:01 2022
+# Load=35/8192=0%, Rehash=0, Collisions=1/63=2%
+# Finished Make data base on Mon Jun 27 17:55:30 2022
 
  
