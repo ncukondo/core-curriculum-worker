@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Jun 27 20:49:51 2022
+# Make data base, printed on Tue Jun 28 08:27:00 2022
 
 # Variables
 
@@ -63,7 +64,7 @@ VSCODE_LOG_STACK = false
 # environment
 PYENV_ROOT = /home/ncukondo/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-c78772a7-4e5a-4dba-98c5-e7eb55189a94.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-29168b18-b121-46ba-91d8-07b503389e1b.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -83,11 +84,11 @@ PWD = /home/ncukondo/dev/core-curriculum-worker
 # environment
 SSH_AGENT_PID = 257
 # environment
-WSL_INTEROP = /run/WSL/19487_interop
+WSL_INTEROP = /run/WSL/24842_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
-WT_SESSION = 1564501e-25b8-4255-acd7-6d923c75d866
+WT_SESSION = 3a501017-8969-49bf-b3e3-c024f24a5911
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -180,8 +181,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=85/1024=8%, Rehash=0, Collisions=10/129=8%
+# Load=86/1024=8%, Rehash=0, Collisions=10/130=8%
 
 # Pattern-specific Variable Values
 
@@ -294,7 +297,6 @@ markdowns:
 #  File has not been updated.
 
 # Not a target:
- 
 Makefile:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-27 15:20:23.060430999
@@ -317,6 +319,7 @@ docx_direct:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 prepare_for_pandoc:
@@ -443,6 +446,6 @@ tex:
 # strcache performance: lookups = 63 / hit rate = 44%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=1/63=2%
-# Finished Make data base on Mon Jun 27 20:49:51 2022
+# Finished Make data base on Tue Jun 28 08:27:00 2022
 
  

@@ -13,4 +13,5 @@ gspread
 oauth2client
 jupyter
 markdown
+pyyaml
 
