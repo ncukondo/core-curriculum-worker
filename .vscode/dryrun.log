@@ -1,5 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/ncukondo/dev/core-curriculum-worker'
+ 
 make documents
 make deploy
 make: Leaving directory '/home/ncukondo/dev/core-curriculum-worker'
