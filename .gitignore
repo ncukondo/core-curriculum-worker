@@ -9,3 +9,5 @@ test_*
 data_in_github
 output
 python
+csl
+*.csl

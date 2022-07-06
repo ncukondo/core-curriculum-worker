@@ -6,7 +6,7 @@ get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
 local_dir:=$(get_dir)
 d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
-.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc all
+.PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc all csl
 
 all:
 	make documents
@@ -14,6 +14,7 @@ all:
 
 documents: 
 	make prepare_for_pandoc 
+	make csl
 	make pdf 
 	make outcome_pdf 
 	make docx 
@@ -23,6 +24,12 @@ documents:
 prepare_for_pandoc: 
 	make python_files 
 	make markdowns
+
+csl:
+	wget -O vancouver.csl https://www.zotero.org/styles/vancouver
+	wget -O ama.csl https://www.zotero.org/styles/american-medical-association
+	wget -O apa6.csl https://www.zotero.org/styles/apa-6th-edition
+
 
 deploy:
 	python ./python/deploy_to_google_drive.py
@@ -48,7 +55,7 @@ pdf:
 		--toc-depth=3 \
 		--bibliography=./data_in_github/citations.bib \
 		--citeproc \
-		--csl=apa \
+		--csl=apa6 \
 		./output/core_curriculum_for_tex.md \
 		-o ./output/core_curriculum.pdf
 
@@ -96,7 +103,7 @@ docx:
 		--filter=pandoc-crossref \
 		--citeproc \
 		--bibliography=./data_in_github/citations.bib \
-		--csl=ama \
+		--csl=apa6 \
 		--self-contained \
 		./output/core_curriculum_for_docx.md \
 		-o ./output/core_curriculum.html
