@@ -4,7 +4,7 @@ gid:=$(shell id -g)
 repo=ghcr.io/ncukondo/
 get_dir:=$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
 local_dir:=$(get_dir)
-d_run:=docker run --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
+d_run:=docker run -i --rm --volume "${local_dir}:/data" --user ${uid}:${gid} ${repo}
 
 .PHONY: pdf statistics deploy markdowns html output prepare_for_pandoc all csl
 
