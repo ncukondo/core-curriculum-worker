@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul  7 18:49:48 2022
+# Make data base, printed on Fri Jul  8 16:26:36 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ WSLENV = ELECTRON_RUN_AS_NODE/w:WT_SESSION::WT_PROFILE_ID
 # environment
 VSCODE_LOG_NATIVE = false
 # makefile (from 'Makefile', line 7)
-d_run := docker run --rm --volume "$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/
+d_run := docker run -i --rm --volume "$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -29,6 +29,7 @@ d_run := docker run --rm --volume "$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}:/data" --
 # automatic
 @F = $(notdir $@)
 # makefile
+ 
 CURDIR := /home/ncukondo/dev/core-curriculum-worker
 # makefile
 SHELL = /bin/sh
@@ -63,7 +64,7 @@ VSCODE_LOG_STACK = false
 # environment
 PYENV_ROOT = /home/ncukondo/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-2ebf1f53-cea0-443c-9d73-34d7aedbb853.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-bcd973cf-0a8b-4752-baa8-1296acf4cb48.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -83,11 +84,11 @@ PWD = /home/ncukondo/dev/core-curriculum-worker
 # environment
 SSH_AGENT_PID = 222
 # environment
-WSL_INTEROP = /run/WSL/1038_interop
+WSL_INTEROP = /run/WSL/22529_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
-WT_SESSION = efd699b0-88f5-4de2-99f9-1fd5b4e16302
+WT_SESSION = ac3ba578-2406-4f19-8030-e796075b8081
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -149,7 +150,6 @@ WT_PROFILE_ID = {2c4de342-38b7-51cf-b940-2309a097f518}
 # 'override' directive
 .SHELLSTATUS := 0
 # default
- 
 MAKEFILES := 
 # makefile (from 'Makefile', line 5)
 get_dir := $${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}
@@ -181,8 +181,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=85/1024=8%, Rehash=0, Collisions=10/129=8%
+# Load=86/1024=8%, Rehash=0, Collisions=10/130=8%
 
 # Pattern-specific Variable Values
 
@@ -299,7 +301,7 @@ markdowns:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-07 08:34:51.387484999
+#  Last modified 2022-07-07 19:13:28.132690999
 #  File has been updated.
 #  Successfully updated.
 
@@ -453,9 +455,10 @@ tex:
 # strcache buffers: 1 (0) / strings = 39 / storage = 361 B / avg = 9 B
 # current buf: size = 8162 B / used = 361 B / count = 39 / avg = 9 B
 
+ 
 # strcache performance: lookups = 70 / hit rate = 44%
 # hash-table stats:
 # Load=39/8192=0%, Rehash=0, Collisions=1/70=1%
-# Finished Make data base on Thu Jul  7 18:49:48 2022
+# Finished Make data base on Fri Jul  8 16:26:36 2022
 
  
