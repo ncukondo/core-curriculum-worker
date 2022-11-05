@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul  8 16:26:36 2022
+# Make data base, printed on Sat Nov  5 12:49:32 2022
 
 # Variables
 
@@ -18,8 +18,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 WSLENV = ELECTRON_RUN_AS_NODE/w:WT_SESSION::WT_PROFILE_ID
 # default
 .SHELLFLAGS := -c
-# environment
-VSCODE_LOG_NATIVE = false
 # makefile (from 'Makefile', line 7)
 d_run := docker run -i --rm --volume "$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}:/data" --user 1000:1000 ghcr.io/ncukondo/
 # automatic
@@ -29,7 +27,6 @@ d_run := docker run -i --rm --volume "$${LOCAL_WORKSPACE_FOLDER:-$$(pwd)}:/data"
 # automatic
 @F = $(notdir $@)
 # makefile
- 
 CURDIR := /home/ncukondo/dev/core-curriculum-worker
 # makefile
 SHELL = /bin/sh
@@ -43,8 +40,6 @@ MAKEFILE_LIST :=  Makefile
 GNUMAKEFLAGS := 
 # environment
 XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
-# environment
-VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 3)
 gid := 1000
 # environment
@@ -56,39 +51,39 @@ uid := 1000
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/ncukondo/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/ncukondo/.pyenv/shims:/home/ncukondo/.pyenv/bin:/home/ncukondo/.deno/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Volta/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Users/ncuko/.pyenv/pyenv-win/bin:/mnt/c/Users/ncuko/.pyenv/pyenv-win/shims:/mnt/c/Users/ncuko/AppData/Local/Volta/bin:/mnt/c/Users/ncuko/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ncuko/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files (x86)/GitHub CLI/:/mnt/c/Users/ncuko/.deno/bin:/mnt/c/Users/ncuko/.pyenv/pyenv-win:/snap/bin
+PATH = /home/ncukondo/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/bin/remote-cli:/home/ncukondo/.pyenv/shims:/home/ncukondo/.pyenv/bin:/home/ncukondo/.deno/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Volta/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/ncuko/.pyenv/pyenv-win/bin:/mnt/c/Users/ncuko/.pyenv/pyenv-win/shims:/mnt/c/Users/ncuko/AppData/Local/Volta/bin:/mnt/c/Users/ncuko/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ncuko/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files (x86)/GitHub CLI/:/mnt/c/Users/ncuko/.deno/bin:/mnt/c/Users/ncuko/.pyenv/pyenv-win:/mnt/c/Users/ncuko/AppData/Local/Microsoft/WindowsApps:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_LOG_STACK = false
+ELECTRON_RUN_AS_NODE = 1
 # environment
 PYENV_ROOT = /home/ncukondo/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-bcd973cf-0a8b-4752-baa8-1296acf4cb48.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-d38ba789-3304-4408-a2ac-b61c5d3da510.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-cWeEz9CFYvnz/agent.221
+SSH_AUTH_SOCK = /tmp/ssh-7mYcAOP11gvT/agent.235
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
-VSCODE_PIPE_LOGGING = true
+WSL2_GUI_APPS_ENABLED = 1
 # environment
 PWD = /home/ncukondo/dev/core-curriculum-worker
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 222
+SSH_AGENT_PID = 236
 # environment
-WSL_INTEROP = /run/WSL/22529_interop
+WSL_INTEROP = /run/WSL/15572_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
-WT_SESSION = ac3ba578-2406-4f19-8030-e796075b8081
+WT_SESSION = ad879783-74f2-41b7-a194-f474e81040d5
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -98,7 +93,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = ncukondo
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -124,7 +119,7 @@ NAME = Code
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/ncuko/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/ncuko/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
 # default
 MAKE_COMMAND := make
 # default
@@ -178,13 +173,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
-# environment
 WSL_DISTRO_NAME = Ubuntu
-# environment
-MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=86/1024=8%, Rehash=0, Collisions=10/130=8%
+# Load=82/1024=8%, Rehash=0, Collisions=10/126=8%
 
 # Pattern-specific Variable Values
 
@@ -192,7 +183,7 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2112, inode 89588): 19 files, no impossibilities.
+# . (device 2080, inode 89588): 19 files, no impossibilities.
 
 # 19 files, no impossibilities in 1 directories.
 
@@ -206,7 +197,7 @@ python_files:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 130):
+#  recipe to execute (from 'Makefile', line 132):
 	jupyter nbconvert --to python ./src/*.ipynb
 	rm -rf python
 	mkdir python
@@ -228,6 +219,8 @@ pdf:
 		--toc-depth=3 \
 		--bibliography=./data_in_github/citations.bib \
 		--citeproc \
+		--metadata link-citations=true \
+		--metadata notes-after-punctuation=true \
 		--csl=apa6 \
 		./output/core_curriculum_for_tex.md \
 		-o ./output/core_curriculum.pdf
@@ -293,6 +286,7 @@ markdowns:
 #  File has not been updated.
 
 # Not a target:
+ 
 .SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -301,7 +295,7 @@ markdowns:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-07 19:13:28.132690999
+#  Last modified 2022-08-09 18:08:46.454104077
 #  File has been updated.
 #  Successfully updated.
 
@@ -309,7 +303,7 @@ docx_direct:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 94):
+#  recipe to execute (from 'Makefile', line 96):
 	${d_run}pandoc-lualatex-ja pandoc\
 		--filter=pandoc-crossref \
 		--toc \
@@ -342,7 +336,7 @@ docx:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 102):
+#  recipe to execute (from 'Makefile', line 104):
 	${d_run}pandoc-lualatex-ja pandoc\
 		--filter=pandoc-crossref \
 		--citeproc \
@@ -361,7 +355,7 @@ outcome_pdf:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 63):
+#  recipe to execute (from 'Makefile', line 65):
 	${d_run}pandoc-lualatex-ja pandoc\
 		-V documentclass=ltjsarticle \
 		--pdf-engine=lualatex \
@@ -375,7 +369,7 @@ pdf_from_tex:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 74):
+#  recipe to execute (from 'Makefile', line 76):
 	${d_run}pandoc-lualatex-ja lualatex\
 		-output-directory=output \
 		./output/outcomes.tex \
@@ -385,7 +379,7 @@ outcome_docx:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 117):
+#  recipe to execute (from 'Makefile', line 119):
 	${d_run}pandoc-lualatex-ja pandoc\
 		--filter=pandoc-crossref \
 		--self-contained \
@@ -433,7 +427,7 @@ tex:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 81):
+#  recipe to execute (from 'Makefile', line 83):
 	${d_run}pandoc-lualatex-ja pandoc\
 		-V documentclass=ltjsarticle \
 		--pdf-engine=lualatex \
@@ -455,10 +449,9 @@ tex:
 # strcache buffers: 1 (0) / strings = 39 / storage = 361 B / avg = 9 B
 # current buf: size = 8162 B / used = 361 B / count = 39 / avg = 9 B
 
- 
 # strcache performance: lookups = 70 / hit rate = 44%
 # hash-table stats:
 # Load=39/8192=0%, Rehash=0, Collisions=1/70=1%
-# Finished Make data base on Fri Jul  8 16:26:36 2022
+# Finished Make data base on Sat Nov  5 12:49:32 2022
 
  

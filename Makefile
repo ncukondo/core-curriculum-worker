@@ -55,6 +55,8 @@ pdf:
 		--toc-depth=3 \
 		--bibliography=./data_in_github/citations.bib \
 		--citeproc \
+		--metadata link-citations=true \
+		--metadata notes-after-punctuation=true \
 		--csl=apa6 \
 		./output/core_curriculum_for_tex.md \
 		-o ./output/core_curriculum.pdf
